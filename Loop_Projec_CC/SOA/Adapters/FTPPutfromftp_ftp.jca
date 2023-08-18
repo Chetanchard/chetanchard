@@ -1,0 +1,14 @@
+<adapter-config name="FTPPutfromftp" adapter="ftp" wsdlLocation="../WSDLs/FTPPutfromftp.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/Ftp/SOAFtpAdapter"/>
+  <endpoint-interaction portType="Put_ptt" operation="Put">
+    <interaction-spec className="oracle.tip.adapter.ftp.outbound.FTPInteractionSpec">
+      <property name="PhysicalDirectory" value="/Ftp/FTP_CC"/>
+      <property name="NumberMessages" value="1"/>
+      <property name="Append" value="false"/>
+      <property name="FileType" value="ascii"/>
+      <property name="FileNamingConvention" value="chetan_%SEQ%.csv"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

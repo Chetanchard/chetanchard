@@ -1,0 +1,12 @@
+<adapter-config name="FTPLISTFROM_FTP" adapter="ftp" wsdlLocation="../WSDLs/FTPLISTFROM_FTP.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory UIincludeWildcard="*.csv" location="eis/Ftp/SOAFtpAdapter"/>
+  <endpoint-interaction portType="FileListing_ptt" operation="FileListing">
+    <interaction-spec className="oracle.tip.adapter.ftp.outbound.FTPListInteractionSpec">
+      <property name="PhysicalDirectory" value="/Ftp/FTP_CC"/>
+      <property name="Recursive" value="true"/>
+      <property name="IncludeFiles" value=".*\.csv"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>
