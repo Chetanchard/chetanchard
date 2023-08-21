@@ -1,0 +1,14 @@
+<adapter-config name="DBSelectfromEMP_CHETAN" adapter="db" wsdlLocation="../WSDLs/DBSelectfromEMP_CHETAN.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory UIConnectionName="soademoDatabase" location="eis/DB/soademoDatabase"/>
+  <endpoint-interaction portType="DBSelectfromEMP_CHETAN_ptt" operation="DBSelectfromEMP_CHETANSelect">
+    <interaction-spec className="oracle.tip.adapter.db.DBReadInteractionSpec">
+      <property name="DescriptorName" value="DBSelectfromEMP_CHETAN.EmpChetan"/>
+      <property name="QueryName" value="DBSelectfromEMP_CHETANSelect"/>
+      <property name="MappingsMetaDataURL" value="DBSelectfromEMP_CHETAN-or-mappings.xml"/>
+      <property name="ReturnSingleResultSet" value="false"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

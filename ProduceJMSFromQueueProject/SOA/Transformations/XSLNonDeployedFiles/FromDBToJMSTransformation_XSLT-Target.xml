@@ -1,0 +1,24 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<tns:Root xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/" xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/jms/TEST_APPLICATION/ProduceJMSFromQueueProject/JMSProduceTochetanQueue" xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/db/TEST_APPLICATION/ProduceJMSFromQueueProject/DBSelectfromEMP_CHETAN" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:tns="http://TargetNamespace.com/JMSProduceTochetanQueue">
+   <tns:Element>
+      <tns:emp_id>empid</tns:emp_id>
+      <tns:emp_name>firstName</tns:emp_name>
+      <tns:emp_city>empCity</tns:emp_city>
+      <tns:emp_age>empAge</tns:emp_age>
+      <tns:emp_lastname>lastName1</tns:emp_lastname>
+   </tns:Element>
+   <tns:Element>
+      <tns:emp_id>string28</tns:emp_id>
+      <tns:emp_name>string30</tns:emp_name>
+      <tns:emp_city>string32</tns:emp_city>
+      <tns:emp_age>34</tns:emp_age>
+      <tns:emp_lastname>string35</tns:emp_lastname>
+   </tns:Element>
+   <tns:Element>
+      <tns:emp_id>string37</tns:emp_id>
+      <tns:emp_name>string39</tns:emp_name>
+      <tns:emp_city>string41</tns:emp_city>
+      <tns:emp_age>43</tns:emp_age>
+      <tns:emp_lastname>string44</tns:emp_lastname>
+   </tns:Element>
+</tns:Root>

@@ -1,0 +1,87 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Mon Aug 21 18:57:29 IST 2023
+  Author:  Hp
+  Type: BPEL 2.0 Process
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="BPELProcess1"
+               targetNamespace="http://xmlns.oracle.com/TEST_APPLICATION/syncCounsumeProject/BPELProcess1"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/TEST_APPLICATION/syncCounsumeProject/BPELProcess1"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:ui="http://xmlns.oracle.com/soa/designer"
+               xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/jms/TEST_APPLICATION/syncCounsumeProject/syncconsume"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/TEST_APPLICATION/syncCounsumeProject/dbInsert">
+
+    <import ui:processWSDL="true" namespace="http://xmlns.oracle.com/TEST_APPLICATION/syncCounsumeProject/BPELProcess1" location="../WSDLs/BPELProcess1.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    --> 
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="bpelprocess1_client" partnerLinkType="client:BPELProcess1" myRole="BPELProcess1Provider"/>
+    <partnerLink name="syncconsume" partnerLinkType="ns1:Sync_Consume_Message_plt"
+                 partnerRole="Sync_Consume_Message_role"/>
+    <partnerLink name="dbInsert" partnerLinkType="ns2:dbInsert_plt" partnerRole="dbInsert_role"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:BPELProcess1RequestMessage"/>
+
+    <!-- Reference to the message that will be returned to the requester-->
+    <variable name="outputVariable" messageType="client:BPELProcess1ResponseMessage"/>
+    <variable name="dbInsertInvoke_IV" messageType="ns2:EmpChetanCollection_msg"/>
+    <variable name="syncconsumeInvoke_IV" messageType="ns1:Empty_msg"/>
+    <variable name="syncconsumeInvoke_OV" messageType="ns1:Sync_Consume_Message_msg"/>
+  </variables>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in BPELProcess1.wsdl) -->
+    <receive name="receiveInput" partnerLink="bpelprocess1_client" portType="client:BPELProcess1" operation="process" variable="inputVariable" createInstance="yes"/>
+    <invoke name="syncconsumeInvoke" partnerLink="syncconsume" portType="ns1:Sync_Consume_Message_ptt"
+            operation="Sync_Consume_Message" inputVariable="syncconsumeInvoke_IV" outputVariable="syncconsumeInvoke_OV"
+            bpelx:invokeAsDetail="no"/>
+    <assign name="Transformation1">
+      <bpelx:annotation>
+        <bpelx:pattern patternName="bpelx:transformation"></bpelx:pattern>
+      </bpelx:annotation>
+      <copy>
+        <from>ora:doXSLTransformForDoc("../Transformations/Transformation_1.xsl", $syncconsumeInvoke_OV.body)</from>
+        <to variable="dbInsertInvoke_IV" part="EmpChetanCollection"/>
+      </copy>
+    </assign>
+    <invoke name="dbInsertInvoke" partnerLink="dbInsert" portType="ns2:dbInsert_ptt"
+            operation="insert" inputVariable="dbInsertInvoke_IV" bpelx:invokeAsDetail="no"/>
+    <!-- Generate reply to synchronous request -->
+    <reply name="replyOutput" partnerLink="bpelprocess1_client" portType="client:BPELProcess1" operation="process" variable="outputVariable"/>
+  </sequence>
+</process>

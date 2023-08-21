@@ -1,0 +1,11 @@
+<adapter-config name="syncconsume" adapter="jms" wsdlLocation="../WSDLs/syncconsume.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/Queue/chetan" UIJmsProvider="THIRDPARTY"/>
+  <endpoint-interaction portType="Sync_Consume_Message_ptt" operation="Sync_Consume_Message">
+    <interaction-spec className="oracle.tip.adapter.jms.receive.JmsReceiveNoWaitInteractionSpec">
+      <property name="DestinationName" value="jms/chetanQueue"/>
+      <property name="PayloadType" value="TextMessage"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

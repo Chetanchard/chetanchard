@@ -1,0 +1,28 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+   <entry key="EMP_CHETAN:db_column_4">LAST_NAME1</entry>
+   <entry key="EMP_CHETAN.EMP_CITY:db_column_type">VARCHAR2</entry>
+   <entry key="EMP_CHETAN:db_column_3">EMP_AGE</entry>
+   <entry key="EMP_CHETAN:db_column_2">EMP_CITY</entry>
+   <entry key="EMP_CHETAN:db_column_1">FIRST_NAME</entry>
+   <entry key="EMP_CHETAN:db_column_0">EMP_ID</entry>
+   <entry key="EMP_CHETAN.EMP_CITY:db_column_not_null">false</entry>
+   <entry key="EMP_CHETAN:db_table_type">TABLE</entry>
+   <entry key="EMP_CHETAN.EMP_ID:db_column_size">250</entry>
+   <entry key="EMP_CHETAN.FIRST_NAME:db_column_not_null">true</entry>
+   <entry key="EMP_CHETAN.FIRST_NAME:db_column_type">VARCHAR2</entry>
+   <entry key="EMP_CHETAN.EMP_CITY:db_column_size">250</entry>
+   <entry key="return_single_result_set">false</entry>
+   <entry key="EMP_CHETAN.EMP_ID:db_column_not_null">false</entry>
+   <entry key="EMP_CHETAN.LAST_NAME1:db_column_type">VARCHAR2</entry>
+   <entry key="EMP_CHETAN.EMP_AGE:db_column_not_null">false</entry>
+   <entry key="EMP_CHETAN.EMP_AGE:db_column_precision">38</entry>
+   <entry key="EMP_CHETAN.FIRST_NAME:db_column_size">250</entry>
+   <entry key="root_descriptor_alias">EMP_CHETAN</entry>
+   <entry key="EMP_CHETAN.LAST_NAME1:db_column_not_null">false</entry>
+   <entry key="EMP_CHETAN.EMP_ID:db_column_type">VARCHAR2</entry>
+   <entry key="EMP_CHETAN.EMP_AGE:db_column_scale">0</entry>
+   <entry key="EMP_CHETAN.LAST_NAME1:db_column_size">20</entry>
+   <entry key="EMP_CHETAN.EMP_AGE:db_column_type">NUMBER</entry>
+</properties>

@@ -1,0 +1,32 @@
+<wsdl:definitions
+     name="DBSelectfromEMP_CHETAN"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/TEST_APPLICATION/ProduceJMSFromQueueProject/DBSelectfromEMP_CHETAN"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/TEST_APPLICATION/ProduceJMSFromQueueProject/DBSelectfromEMP_CHETAN"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/DBSelectfromEMP_CHETAN"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+  <plt:partnerLinkType name="DBSelectfromEMP_CHETAN_plt" >
+    <plt:role name="DBSelectfromEMP_CHETAN_role" >
+      <plt:portType name="tns:DBSelectfromEMP_CHETAN_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/DBSelectfromEMP_CHETAN" schemaLocation="../Schemas/DBSelectfromEMP_CHETAN_table.xsd" />
+      </schema>
+    </wsdl:types>
+    <wsdl:message name="DBSelectfromEMP_CHETANSelect_inputParameters">
+        <wsdl:part name="DBSelectfromEMP_CHETANSelect_inputParameters" element="top:DBSelectfromEMP_CHETANSelectInputParameters"/>
+    </wsdl:message>
+    <wsdl:message name="EmpChetanCollection_msg">
+        <wsdl:part name="EmpChetanCollection" element="top:EmpChetanCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="DBSelectfromEMP_CHETAN_ptt">
+        <wsdl:operation name="DBSelectfromEMP_CHETANSelect">
+            <wsdl:input message="tns:DBSelectfromEMP_CHETANSelect_inputParameters"/>
+            <wsdl:output message="tns:EmpChetanCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

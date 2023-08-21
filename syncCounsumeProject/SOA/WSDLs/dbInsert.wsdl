@@ -1,0 +1,28 @@
+<wsdl:definitions
+     name="dbInsert"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/TEST_APPLICATION/syncCounsumeProject/dbInsert"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/TEST_APPLICATION/syncCounsumeProject/dbInsert"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/dbInsert"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+  <plt:partnerLinkType name="dbInsert_plt" >
+    <plt:role name="dbInsert_role" >
+      <plt:portType name="tns:dbInsert_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/dbInsert" schemaLocation="../Schemas/dbInsert_table.xsd" />
+      </schema>
+    </wsdl:types>
+    <wsdl:message name="EmpChetanCollection_msg">
+        <wsdl:part name="EmpChetanCollection" element="top:EmpChetanCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="dbInsert_ptt">
+        <wsdl:operation name="insert">
+            <wsdl:input message="tns:EmpChetanCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

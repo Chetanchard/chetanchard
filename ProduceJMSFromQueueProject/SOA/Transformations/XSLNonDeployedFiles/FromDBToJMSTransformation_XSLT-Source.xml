@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<EmpChetanCollection xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/DBSelectfromEMP_CHETAN">
+   <EmpChetan>
+      <empId>string28</empId>
+      <firstName>string30</firstName>
+      <empCity>string32</empCity>
+      <empAge>34</empAge>
+      <lastName1>string35</lastName1>
+   </EmpChetan>
+   <EmpChetan>
+      <empId>string37</empId>
+      <firstName>string39</firstName>
+      <empCity>string41</empCity>
+      <empAge>43</empAge>
+      <lastName1>string44</lastName1>
+   </EmpChetan>
+ 
+</EmpChetanCollection>

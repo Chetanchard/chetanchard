@@ -1,0 +1,53 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer
+
+  Created: Mon Aug 21 17:26:53 IST 2023
+  Author:  Hp
+  Type: BPEL 2.0 Process
+  Purpose: Empty BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="CounsumeMassegeToDB_Project_BPEL"
+               targetNamespace="http://xmlns.oracle.com/TEST_APPLICATION/CounsumeMassegeToDB_Project_CC/CounsumeMassegeToDB_Project_BPEL"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/TEST_APPLICATION/CounsumeMassegeToDB_Project_CC/CounsumeMassegeToDB_Project_BPEL"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+               xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/jms/TEST_APPLICATION/CounsumeMassegeToDB_Project_CC/JMSConsumeFromJMS"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/TEST_APPLICATION/CounsumeMassegeToDB_Project_CC/DBIncertToDB">
+
+  <!--
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC
+     Set of activities coordinating the flow of messages across the
+     services integrated within this business process
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <partnerLinks>
+    <partnerLink name="JMSConsumeFromJMS" partnerLinkType="ns1:Consume_Message_plt" myRole="Consume_Message_role"/>
+    <partnerLink name="DBIncertToDB" partnerLinkType="ns2:DBIncertToDB_plt" partnerRole="DBIncertToDB_role"/>
+  </partnerLinks>
+  <variables>
+    <variable name="JMSConsumeFromJMS_Receive_IV" messageType="ns1:Consume_Message_msg"/>
+    <variable name="DBIncertToDB_Invoke_IV" messageType="ns2:EmpChetanCollection_msg"/>
+  </variables>
+  <sequence name="main">
+    <receive name="JMSConsumeFromJMS_Receive" partnerLink="JMSConsumeFromJMS" portType="ns1:Consume_Message_ptt"
+             operation="Consume_Message" variable="JMSConsumeFromJMS_Receive_IV" createInstance="yes"/>
+    <assign name="FromJMSToDB">
+      <bpelx:annotation>
+        <bpelx:pattern patternName="bpelx:transformation"></bpelx:pattern>
+      </bpelx:annotation>
+      <copy>
+        <from>ora:doXSLTransformForDoc("../Transformations/FromJMSToDB_XSLT.xsl", $DBIncertToDB_Invoke_IV.EmpChetanCollection)</from>
+        <to variable="JMSConsumeFromJMS_Receive_IV" part="body"/>
+      </copy>
+    </assign>
+    <invoke name="DBIncertToDB_Invoke" partnerLink="DBIncertToDB"
+            portType="ns2:DBIncertToDB_ptt" operation="insert" inputVariable="DBIncertToDB_Invoke_IV"
+            bpelx:invokeAsDetail="no"/>
+  </sequence>
+</process>

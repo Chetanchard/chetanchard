@@ -1,0 +1,90 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Mon Aug 21 15:40:42 IST 2023
+  Author:  Hp
+  Type: BPEL 2.0 Process
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="QueueBPEL"
+               targetNamespace="http://xmlns.oracle.com/TEST_APPLICATION/ProduceJMSFromQueueProject/QueueBPEL"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/TEST_APPLICATION/ProduceJMSFromQueueProject/QueueBPEL"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:ui="http://xmlns.oracle.com/soa/designer"
+               xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/db/TEST_APPLICATION/ProduceJMSFromQueueProject/DBSelectfromEMP_CHETAN"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/jms/TEST_APPLICATION/ProduceJMSFromQueueProject/JMSProduceTochetanQueue">
+
+    <import ui:processWSDL="true" namespace="http://xmlns.oracle.com/TEST_APPLICATION/ProduceJMSFromQueueProject/QueueBPEL" location="../WSDLs/QueueBPEL.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    --> 
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="queuebpel_client" partnerLinkType="client:QueueBPEL" myRole="QueueBPELProvider"/>
+    <partnerLink name="DBSelectfromEMP_CHETAN" partnerLinkType="ns1:DBSelectfromEMP_CHETAN_plt"
+                 partnerRole="DBSelectfromEMP_CHETAN_role"/>
+    <partnerLink name="JMSProduceTochetanQueue" partnerLinkType="ns2:Produce_Message_plt"
+                 partnerRole="Produce_Message_role"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:QueueBPELRequestMessage"/>
+
+    <!-- Reference to the message that will be returned to the requester-->
+    <variable name="outputVariable" messageType="client:QueueBPELResponseMessage"/>
+    <variable name="DBSelectfromEMP_CHETAN_Invoke_IV" messageType="ns1:DBSelectfromEMP_CHETANSelect_inputParameters"/>
+    <variable name="DBSelectfromEMP_CHETAN_Invoke_OV" messageType="ns1:EmpChetanCollection_msg"/>
+    <variable name="JMSProduceTochetanQueue_Invoke_IV" messageType="ns2:Produce_Message_msg"/>
+  </variables>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in QueueBPEL.wsdl) -->
+    <receive name="receiveInput" partnerLink="queuebpel_client" portType="client:QueueBPEL" operation="process" variable="inputVariable" createInstance="yes"/>
+    <invoke name="DBSelectfromEMP_CHETAN_Invoke" partnerLink="DBSelectfromEMP_CHETAN"
+            portType="ns1:DBSelectfromEMP_CHETAN_ptt" operation="DBSelectfromEMP_CHETANSelect"
+            inputVariable="DBSelectfromEMP_CHETAN_Invoke_IV" outputVariable="DBSelectfromEMP_CHETAN_Invoke_OV"
+            bpelx:invokeAsDetail="no"/>
+    <assign name="FromDBToJMSTransformation">
+      <bpelx:annotation>
+        <bpelx:pattern patternName="bpelx:transformation"></bpelx:pattern>
+      </bpelx:annotation>
+      <copy>
+        <from>ora:doXSLTransformForDoc("../Transformations/FromDBToJMSTransformation_XSLT.xsl", $DBSelectfromEMP_CHETAN_Invoke_OV.EmpChetanCollection)</from>
+        <to variable="JMSProduceTochetanQueue_Invoke_IV" part="body"/>
+      </copy>
+    </assign>
+    <invoke name="JMSProduceTochetanQueue_Invoke" bpelx:invokeAsDetail="no" partnerLink="JMSProduceTochetanQueue"
+            portType="ns2:Produce_Message_ptt" operation="Produce_Message"
+            inputVariable="JMSProduceTochetanQueue_Invoke_IV"/>
+    <!-- Generate reply to synchronous request -->
+    <reply name="replyOutput" partnerLink="queuebpel_client" portType="client:QueueBPEL" operation="process" variable="outputVariable"/>
+  </sequence>
+</process>
