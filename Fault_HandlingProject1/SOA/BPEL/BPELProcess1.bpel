@@ -1,0 +1,144 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Fri Aug 25 12:54:43 IST 2023
+  Author:  Hp
+  Type: BPEL 2.0 Process
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="BPELProcess1"
+               targetNamespace="http://xmlns.oracle.com/POProcessingApplication/Fault_HandlingProject1/BPELProcess1"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/POProcessingApplication/Fault_HandlingProject1/BPELProcess1"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:ui="http://xmlns.oracle.com/soa/designer"
+               xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://oracle.com/sca/soapservice/CreditCardValidationApplication/validationForCC_CC/getStatusByCC"
+         xmlns:ns2="http://www.globalcompany.com/ns/CCAuthorizationService"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:ess="http://xmlns.oracle.com/scheduler" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns3="http://oracle.com/sca/soapservice/Soa_Test_Application/validationForCC/getStatusByCC"
+         xmlns:ns4="http://www.CustumFault/EHService">
+  <import namespace="http://www.CustumFault/EHService" location="../Schemas/CustumFaultSchema.xsd"
+          importType="http://www.w3.org/2001/XMLSchema"/>
+  <import ui:processWSDL="true" namespace="http://xmlns.oracle.com/POProcessingApplication/Fault_HandlingProject1/BPELProcess1" location="../WSDLs/BPELProcess1.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    --> 
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="bpelprocess1_client" partnerLinkType="client:BPELProcess1" myRole="BPELProcess1Provider"/>
+    <partnerLink name="SOAPReference" partnerLinkType="ns1:SOAPReference" partnerRole="execute_ptt"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:BPELProcess1RequestMessage"/>
+
+    <!-- Reference to the message that will be returned to the requester-->
+    <variable name="outputVariable" messageType="client:BPELProcess1ResponseMessage"/>
+    <variable name="SOAPReference_Invoke_execute_InputVariable_iv" messageType="ns1:requestMessage"/>
+    <variable name="SOAPReference_Invoke_oov" messageType="ns1:replyMessage"/>
+    <variable name="MyCustomFaultVar" element="ns4:exampleElement"/>
+  </variables>
+  <faultHandlers>
+    <catch faultName="bpelx:remoteFault"><sequence name="Sequence1"
+                                                   xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+      <assign name="Assign2" xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+      
+   <copy>
+         <from>"Fault handle by Catch block"</from>
+         <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/client:result</to>
+      </copy></assign>
+      <reply name="replyOutput" partnerLink="bpelprocess1_client" portType="client:BPELProcess1" operation="process"
+             variable="outputVariable" xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"/>
+   </sequence></catch>
+    <catchAll><sequence name="Sequence1"><assign name="Assign2"
+                                                                                                                          xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+      
+   <copy>
+         <from>concat(ora:getFaultName(),'has been handled by Catch All Block')</from>
+         <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/client:result</to>
+      </copy></assign><reply name="replyOutput" partnerLink="bpelprocess1_client" portType="client:BPELProcess1"
+                   operation="process" variable="outputVariable"
+                   xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"/></sequence></catchAll>
+  </faultHandlers>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in BPELProcess1.wsdl) -->
+    <receive name="receiveInput" partnerLink="bpelprocess1_client" portType="client:BPELProcess1" operation="process" variable="inputVariable" createInstance="yes"/>
+    <throw name="ThrowCustomFault"/>
+    <scope name="Scope1">
+      <faultHandlers>
+        <catch faultName="bpelx:remoteFault">
+          <rethrow name="RethrowSameFault"/>
+        </catch>
+      </faultHandlers><throw name="ThrowRemoteFault" faultName="bpelx:remoteFault"
+                             xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"/></scope>
+    <if name="If_jon">
+      <documentation>
+        <![CDATA[RemoteFault]]>
+      </documentation>
+      <condition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$inputVariable.payload/client:input='jon'</condition>
+      <throw name="ThrowRemoteFault" faultName="bpelx:remoteFault"/>
+      <else>
+        <documentation>
+          <![CDATA[BindingFault]]>
+        </documentation>
+        <sequence name="Sequence2">
+          <throw name="ThrowBindingFault" faultName="bpelx:bindingFault"/>
+        </sequence>
+      </else>
+    </if>
+    <assign name="Assign1">
+      <copy>
+        <from>$inputVariable.payload/client:input</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$SOAPReference_Invoke_execute_InputVariable_iv.Input/ns2:CCNumber</to>
+      </copy>
+    </assign>
+    <invoke name="SOAPReference_Invoke" partnerLink="SOAPReference"
+            portType="ns1:execute_ptt" operation="execute"
+            inputVariable="SOAPReference_Invoke_execute_InputVariable_iv" outputVariable="SOAPReference_Invoke_oov"
+            bpelx:invokeAsDetail="no"/>
+    <assign name="Assign2">
+      <copy>
+        <from>$SOAPReference_Invoke_oov.Output</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/client:result</to>
+      </copy>
+    </assign>
+    <!-- Generate reply to synchronous request -->
+    <reply name="replyOutput" partnerLink="bpelprocess1_client" portType="client:BPELProcess1" operation="process" variable="outputVariable"/>
+  </sequence>
+</process>

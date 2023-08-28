@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<PurchaseOrder xmlns="http://xmlns.oracle.com/ns/order">
+   <CustID>CustID1</CustID>
+   <ID>ID2</ID>
+   <productName>productName3</productName>
+   <itemType>itemType4</itemType>
+   <price>5</price>
+   <quantity>6</quantity>
+   <status>status7</status>
+   <ccType>ccType8</ccType>
+   <ccNumber>ccNumber9</ccNumber>
+</PurchaseOrder>

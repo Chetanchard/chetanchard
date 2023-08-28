@@ -30,8 +30,16 @@
          xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
          xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
          xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
-         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap">
-
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns5="http://xmlns.oracle.com/bpel/workflow/taskService"
+         xmlns:task="http://xmlns.oracle.com/bpel/workflow/task"
+         xmlns:wfcommon="http://xmlns.oracle.com/bpel/workflow/common"
+         xmlns:wf="http://schemas.oracle.com/bpel/extensions/workflow"
+         xmlns:ns6="http://xmlns.oracle.com/bpel/workflow/TaskEvidenceService"
+         xmlns:ns7="http://xmlns.oracle.com/ManualApproval/ManualApproval_DecisionService_1"
+         xmlns:ns9="http://www.globalcompany.com/ns/OrderBooking/rules" xmlns:ns8="http://xmlns.oracle.com/bpel">
+    <import namespace="http://www.globalcompany.com/ns/OrderBooking/rules"
+            location="../Schemas/OrderBookingDiscount.xsd" importType="http://www.w3.org/2001/XMLSchema"/>
     <import ui:processWSDL="true" namespace="http://xmlns.oracle.com/POProcessingApplication/POProcessing_CCProject1/approveLargeOrder" location="../WSDLs/approveLargeOrder.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
     <!-- 
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -47,6 +55,8 @@
     -->
         <partnerLink name="approvelargeorder_client" partnerLinkType="client:approveLargeOrder" myRole="approveLargeOrderProvider" partnerRole="approveLargeOrderRequester"/>
         <partnerLink name="getCreditCardStatus" partnerLinkType="ns2:getCreditCardStatus" partnerRole="execute_ptt"/>
+        <partnerLink name="ManualApproval.ManualApproval_DecisionService_1" partnerRole="IDecisionService_Role"
+                     partnerLinkType="ns7:IDecisionService_PLT"/>
     </partnerLinks>
 
     <!-- 
@@ -63,6 +73,7 @@
         <variable name="outputVariable" messageType="client:approveLargeOrderResponseMessage"/>
         <variable name="invokeCCStatusService_IV" messageType="ns2:requestMessage"/>
         <variable name="invokeCCStatusService_OV" messageType="ns2:replyMessage"/>
+        <variable name="approvalRequired" element="ns9:discountandshipping"/>
     </variables>
 
     <!-- 
@@ -90,12 +101,58 @@
                 outputVariable="invokeCCStatusService_OV" bpelx:invokeAsDetail="no"/>
         <if name="IfStautasisvalid">
             <condition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$invokeCCStatusService_OV.Output="VALID"</condition>
-            <assign name="assignApproval">
-                <copy>
-                    <from>'approved'</from>
-                    <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/ns3:status</to>
-                </copy>
-            </assign>
+            <sequence name="Sequence1">
+                <assign name="assignApproval">
+                    <copy>
+                        <from>'approved'</from>
+                        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/ns3:status</to>
+                    </copy>
+                </assign>
+                <scope name="DiscountRule">
+                    <bpelx:annotation>
+                        <bpelx:pattern patternName="bpelx:decide"></bpelx:pattern>
+                    </bpelx:annotation>
+                    <variables>
+                        <variable name="dsIn" messageType="ns7:callFunctionStatelessMessage"/>
+                        <variable name="dsOut" messageType="ns7:callFunctionStatelessDecisionMessage"/>
+                    </variables>
+                    <sequence name="Sequence2">
+                        <assign name="Facts_To_Rule_Service">
+                            <copy>
+                                <from>$inputVariable.payload/ns3:price * $inputVariable.payload/ns3:qty</from>
+                                <to variable="dsIn" part="payload"><query>ns7:parameterList/ns9:price/ns9:price</query></to>
+                            </copy>
+                        </assign>
+                        <assign name="BPEL_Header">
+                            <copy>
+                                <from>"ManualApproval_DecisionService_1"</from>
+                                <to variable="dsIn" part="payload"><query>@name</query></to>
+                            </copy>
+                        </assign>
+                        <invoke name="Invoke" partnerLink="ManualApproval.ManualApproval_DecisionService_1"
+                                portType="ns7:IDecisionService" operation="callFunctionStateless" inputVariable="dsIn"
+                                outputVariable="dsOut"/>
+                        <assign name="Rule_Service_To_Facts">
+                            <copy>
+                                <from variable="dsOut" part="payload"><query>ns7:resultList/ns7:discountandshipping</query></from>
+                                <to variable="approvalRequired"/>
+                            </copy>
+                        </assign>
+                    </sequence>
+                </scope>
+                <if name="IfTrue">
+                    <condition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$approvalRequired/ns9:approvalRequired='true'</condition>
+                    <assign name="AssignPrice">
+                        <copy>
+                            <from>$approvalRequired/ns9:price</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/ns3:price</to>
+                        </copy>
+                    </assign>
+                    <else>
+                        <empty name="D0Nothing"/>
+                    </else>
+                </if>
+            </sequence>
             <else>
                 <assign name="assignInvalidCC">
                     <copy>

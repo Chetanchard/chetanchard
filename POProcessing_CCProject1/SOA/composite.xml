@@ -15,13 +15,15 @@
           location="WSDLs/receivePO.wsdl" importType="wsdl"/>
   <import namespace="http://xmlns.oracle.com/pcbpel/adapter/file/POProcessingApplication/POProcessing_CCProject1/WriteApprovalResults_"
           location="WSDLs/WriteApprovalResults_.wsdl" importType="wsdl"/>
-  <import namespace="http://oracle.com/sca/soapservice/CreditCardValidationApplication/validationForCC_CC/getStatusByCC"
-          location="http://harshal-main:8001/soa-infra/services/default/validationForCC_CC!1.0/WSDLs/getStatusByCC.wsdl"
-          importType="wsdl"/>
   <import namespace="http://xmlns.oracle.com/POProcessingApplication/POProcessing_CCProject1/approveLargeOrder"
           location="WSDLs/approveLargeOrder.wsdl" importType="wsdl"/>
   <import namespace="http://oracle.com/sca/soapservice/CreditCardValidationApplication/validationForCC_CC/getStatusByCC"
           location="WSDLs/getStatusByCCWrapper.wsdl" importType="wsdl"/>
+  <import namespace="http://oracle.com/sca/soapservice/CreditCardValidationApplication/validationForCC_CC/getStatusByCC"
+          location="http://192.168.2.106:8001/soa-infra/services/default/validationForCC_CC!1.0/WSDLs/getStatusByCC.wsdl"
+          importType="wsdl"/>
+  <import namespace="http://xmlns.oracle.com/ManualApproval/ManualApproval_DecisionService_1"
+          location="WSDLs/ManualApproval_DecisionService_1.wsdl" importType="wsdl"/>
   <service name="receivePO" ui:wsdlLocation="WSDLs/receivePO.wsdl">
     <interface.wsdl interface="http://oracle.com/sca/soapservice/POProcessingApplication/POProcessing_CCProject1/receivePO#wsdl.interface(execute_ptt)"/>
     <binding.ws port="http://oracle.com/sca/soapservice/POProcessingApplication/POProcessing_CCProject1/receivePO#wsdl.endpoint(receivePO/execute_pt)">
@@ -39,6 +41,10 @@
       </service>
       <reference name="getCreditCardStatus" ui:wsdlLocation="WSDLs/getStatusByCCWrapper.wsdl">
         <interface.wsdl interface="http://oracle.com/sca/soapservice/CreditCardValidationApplication/validationForCC_CC/getStatusByCC#wsdl.interface(execute_ptt)"/>
+      </reference>
+      <reference name="ManualApproval.ManualApproval_DecisionService_1"
+                 ui:wsdlLocation="WSDLs/ManualApproval_DecisionService_1.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/ManualApproval/ManualApproval_DecisionService_1#wsdl.interface(IDecisionService)"/>
       </reference>
     </componentType>
     <property name="bpel.config.oneWayDeliveryPolicy" type="xs:string" many="false">async.persist</property>
@@ -58,15 +64,23 @@
       </reference>
     </componentType>
   </component>
+  <component name="ManualApproval">
+    <implementation.decision src="ManualApproval.decs"/>
+    <componentType>
+      <service name="ManualApproval_DecisionService_1" ui:wsdlLocation="WSDLs/ManualApproval_DecisionService_1.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/ManualApproval/ManualApproval_DecisionService_1#wsdl.interface(IDecisionService)"/>
+      </service>
+    </componentType>
+  </component>
   <reference name="WriteApprovalResults." ui:wsdlLocation="WSDLs/WriteApprovalResults_.wsdl">
     <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/file/POProcessingApplication/POProcessing_CCProject1/WriteApprovalResults_#wsdl.interface(Write_ptt)"/>
     <binding.jca config="Adapters/WriteApprovalResults._file.jca"/>
   </reference>
   <reference name="getCreditCardStatus"
-             ui:wsdlLocation="http://harshal-main:8001/soa-infra/services/default/validationForCC_CC!1.0/WSDLs/getStatusByCC.wsdl">
+             ui:wsdlLocation="http://192.168.2.106:8001/soa-infra/services/default/validationForCC_CC!1.0/WSDLs/getStatusByCC.wsdl">
     <interface.wsdl interface="http://oracle.com/sca/soapservice/CreditCardValidationApplication/validationForCC_CC/getStatusByCC#wsdl.interface(execute_ptt)"/>
     <binding.ws port="http://oracle.com/sca/soapservice/CreditCardValidationApplication/validationForCC_CC/getStatusByCC#wsdl.endpoint(getStatusByCC/execute_pt)"
-                location="http://harshal-main:8001/soa-infra/services/default/validationForCC_CC/getStatusByCC?WSDL"
+                location="http://192.168.2.106:8001/soa-infra/services/default/validationForCC_CC/getStatusByCC?WSDL"
                 soapVersion="1.1">
       <property name="weblogic.wsee.wsat.transaction.flowOption" type="xs:string" many="false">WSDLDriven</property>
     </binding.ws>
@@ -86,5 +100,9 @@
   <wire>
     <source.uri>RoutePO/approveLargeOrder.approvelargeorder_client</source.uri>
     <target.uri>approveLargeOrder/approvelargeorder_client</target.uri>
+  </wire>
+  <wire>
+    <source.uri>approveLargeOrder/ManualApproval.ManualApproval_DecisionService_1</source.uri>
+    <target.uri>ManualApproval/ManualApproval_DecisionService_1</target.uri>
   </wire>
 </composite>

@@ -1,2 +1,483 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Faults/>
+<Faults>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:import[@location='WSDLs/getStatusByCCWrapper.wsdl']</loc>
+      <line>21</line>
+      <col>73</col>
+      <file>C:\JDeveloper\mywork\POProcessingApplication\POProcessing_CCProject1\SOA\composite.xml</file>
+      <name>C:\JDeveloper\mywork\POProcessingApplication\POProcessing_CCProject1\SOA\composite.xml</name>
+      <fix/>
+      <msg>Load of wsdl "WSDLs/getStatusByCCWrapper.wsdl" failed</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:import[@location='http://192.168.2.106:8001/soa-infra/services/default/validationForCC_CC!1.0/WSDLs/getStatusByCC.wsdl']</loc>
+      <line>24</line>
+      <col>30</col>
+      <file>C:\JDeveloper\mywork\POProcessingApplication\POProcessing_CCProject1\SOA\composite.xml</file>
+      <name>C:\JDeveloper\mywork\POProcessingApplication\POProcessing_CCProject1\SOA\composite.xml</name>
+      <fix/>
+      <msg>Load of wsdl "http://192.168.2.106:8001/soa-infra/services/default/validationForCC_CC!1.0/WSDLs/getStatusByCC.wsdl" failed</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:reference[@name='getCreditCardStatus']</loc>
+      <line>80</line>
+      <col>133</col>
+      <file>C:\JDeveloper\mywork\POProcessingApplication\POProcessing_CCProject1\SOA\composite.xml</file>
+      <name>C:\JDeveloper\mywork\POProcessingApplication\POProcessing_CCProject1\SOA\composite.xml</name>
+      <fix/>
+      <msg>Cannot find Port Type "{http://oracle.com/sca/soapservice/CreditCardValidationApplication/validationForCC_CC/getStatusByCC}execute_ptt" for "getCreditCardStatus" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:reference[@name='getCreditCardStatus']</loc>
+      <line>80</line>
+      <col>133</col>
+      <file>C:\JDeveloper\mywork\POProcessingApplication\POProcessing_CCProject1\SOA\composite.xml</file>
+      <name>C:\JDeveloper\mywork\POProcessingApplication\POProcessing_CCProject1\SOA\composite.xml</name>
+      <fix/>
+      <msg>Failed to Find Binding "getCreditCardStatus":"{http://oracle.com/sca/soapservice/CreditCardValidationApplication/validationForCC_CC/getStatusByCC}execute_pt" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:reference[@name='getCreditCardStatus']</loc>
+      <line>80</line>
+      <col>133</col>
+      <file>C:\JDeveloper\mywork\POProcessingApplication\POProcessing_CCProject1\SOA\composite.xml</file>
+      <name>C:\JDeveloper\mywork\POProcessingApplication\POProcessing_CCProject1\SOA\composite.xml</name>
+      <fix/>
+      <msg>Failed to Find Binding "getCreditCardStatus":"{http://oracle.com/sca/soapservice/CreditCardValidationApplication/validationForCC_CC/getStatusByCC}execute_pt" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:component[@name='approveLargeOrder']</loc>
+      <line>35</line>
+      <col>53</col>
+      <file>C:\JDeveloper\mywork\POProcessingApplication\POProcessing_CCProject1\SOA\composite.xml</file>
+      <name>C:\JDeveloper\mywork\POProcessingApplication\POProcessing_CCProject1\SOA\composite.xml</name>
+      <fix/>
+      <msg>Cannot find Port Type "{http://oracle.com/sca/soapservice/CreditCardValidationApplication/validationForCC_CC/getStatusByCC}execute_ptt" for "getCreditCardStatus" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']</loc>
+      <line>40</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Please check import location or element QNames.</fix>
+      <msg>javax.wsdl.WSDLException: WSDLException: faultCode=INVALID_WSDL: Error reading import of file:/C:/JDeveloper/mywork/POProcessingApplication/POProcessing_CCProject1/SOA/WSDLs/getStatusByCCWrapper.wsdl: oracle.j2ee.ws.wsdl.LocalizedWSDLException: WSDLException: faultCode=PARSER_ERROR: Failed to read wsdl file at: "http://192.168.2.106:8001/soa-infra/services/default/validationForCC_CC!1.0/WSDLs/getStatusByCC.wsdl", caused by: java.net.NoRouteToHostException.: java.net.NoRouteToHostException: No route to host: connect: WSDLException: faultCode=INVALID_WSDL: Error reading import of file:/C:/JDeveloper/mywork/POProcessingApplication/POProcessing_CCProject1/SOA/WSDLs/getStatusByCCWrapper.wsdl: oracle.j2ee.ws.wsdl.LocalizedWSDLException: WSDLException: faultCode=PARSER_ERROR: Failed to read wsdl file at: "http://192.168.2.106:8001/soa-infra/services/default/validationForCC_CC!1.0/WSDLs/getStatusByCC.wsdl", caused by: java.net.NoRouteToHostException.: java.net.NoRouteToHostException: No route to host: connect</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='import'][1]</loc>
+      <line>42</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Check location "../Schemas/OrderBookingDiscount.xsd" and import type "http://www.w3.org/2001/XMLSchema"</fix>
+      <msg>Cannot import type "http://www.w3.org/2001/XMLSchema" from location "../Schemas/OrderBookingDiscount.xsd"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='import'][2]</loc>
+      <line>43</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Check location "../WSDLs/approveLargeOrder.wsdl" and import type "http://schemas.xmlsoap.org/wsdl/"</fix>
+      <msg>Cannot import type "http://schemas.xmlsoap.org/wsdl/" from location "../WSDLs/approveLargeOrder.wsdl"</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='partnerLinks']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='partnerLink'][@name='approvelargeorder_client']</loc>
+      <line>56</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Make sure that value "client:approveLargeOrder" is resolvable (check imports, value of "partnerLinkType").</fix>
+      <msg>"partnerLinkType" is set to "client:approveLargeOrder" on this &lt;bpel:partnerLink>  but it cannot be resolved (check value of "partnerLinkType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='partnerLinks']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='partnerLink'][@name='getCreditCardStatus']</loc>
+      <line>57</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Make sure that value "ns2:getCreditCardStatus" is resolvable (check imports, value of "partnerLinkType").</fix>
+      <msg>"partnerLinkType" is set to "ns2:getCreditCardStatus" on this &lt;bpel:partnerLink>  but it cannot be resolved (check value of "partnerLinkType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='partnerLinks']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='partnerLink'][@name='ManualApproval.ManualApproval_DecisionService_1']</loc>
+      <line>59</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Make sure that value "ns7:IDecisionService_PLT" is resolvable (check imports, value of "partnerLinkType").</fix>
+      <msg>"partnerLinkType" is set to "ns7:IDecisionService_PLT" on this &lt;bpel:partnerLink>  but it cannot be resolved (check value of "partnerLinkType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='variables']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='variable'][@name='inputVariable']</loc>
+      <line>70</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Make sure that value "client:approveLargeOrderRequestMessage" is resolvable (check imports, value of "messageType").</fix>
+      <msg>"messageType" is set to "client:approveLargeOrderRequestMessage" on this &lt;bpel:variable>  but it cannot be resolved (check value of "messageType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='variables']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='variable'][@name='outputVariable']</loc>
+      <line>73</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Make sure that value "client:approveLargeOrderResponseMessage" is resolvable (check imports, value of "messageType").</fix>
+      <msg>"messageType" is set to "client:approveLargeOrderResponseMessage" on this &lt;bpel:variable>  but it cannot be resolved (check value of "messageType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='variables']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='variable'][@name='invokeCCStatusService_IV']</loc>
+      <line>74</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Make sure that value "ns2:requestMessage" is resolvable (check imports, value of "messageType").</fix>
+      <msg>"messageType" is set to "ns2:requestMessage" on this &lt;bpel:variable>  but it cannot be resolved (check value of "messageType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='variables']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='variable'][@name='invokeCCStatusService_OV']</loc>
+      <line>75</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Make sure that value "ns2:replyMessage" is resolvable (check imports, value of "messageType").</fix>
+      <msg>"messageType" is set to "ns2:replyMessage" on this &lt;bpel:variable>  but it cannot be resolved (check value of "messageType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='variables']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='variable'][@name='approvalRequired']</loc>
+      <line>76</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Make sure that value "ns9:discountandshipping" is resolvable (check imports, value of "element").</fix>
+      <msg>"element" is set to "ns9:discountandshipping" on this &lt;bpel:variable>  but it cannot be resolved (check value of "element", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='receive'][@name='receiveInput']</loc>
+      <line>88</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Check the bpel:partnerLink specified on this activity via attribute "partnerLink" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:receive> refers to a bpel:partnerLink (via the attribute "partnerLink") - this bpel:partnerLink needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='receive'][@name='receiveInput']</loc>
+      <line>88</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Make sure that value "client:approveLargeOrder" is resolvable (check imports, value of "portType").</fix>
+      <msg>"portType" is set to "client:approveLargeOrder" on this &lt;bpel:receive> activity but it cannot be resolved (check value of "portType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='receive'][@name='receiveInput']</loc>
+      <line>88</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Check the bpel:variable specified on this activity via attribute "variable" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:receive> refers to a bpel:variable (via the attribute "variable") - this bpel:variable needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='assign'][@name='assignCCNumber']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='copy'][1]</loc>
+      <line>90</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Types must be compatible.</fix>
+      <msg>The from-spec of "type" is not compatible with to-spec of "type"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='assign'][@name='assignCCNumber']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='copy'][2]</loc>
+      <line>94</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Types must be compatible.</fix>
+      <msg>The from-spec of "type" is not compatible with to-spec of "type"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='invoke'][@name='invokeCCStatusService']</loc>
+      <line>101</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Check the bpel:partnerLink specified on this activity via attribute "partnerLink" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:invoke> refers to a bpel:partnerLink (via the attribute "partnerLink") - this bpel:partnerLink needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='invoke'][@name='invokeCCStatusService']</loc>
+      <line>101</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Check the bpel:variable specified on this activity via attribute "outputVariable" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:invoke> refers to a bpel:variable (via the attribute "outputVariable") - this bpel:variable needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='invoke'][@name='invokeCCStatusService']</loc>
+      <line>101</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Check the bpel:variable specified on this activity via attribute "inputVariable" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:invoke> refers to a bpel:variable (via the attribute "inputVariable") - this bpel:variable needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='invoke'][@name='invokeCCStatusService']</loc>
+      <line>101</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Make sure that value "ns2:execute_ptt" is resolvable (check imports, value of "portType").</fix>
+      <msg>"portType" is set to "ns2:execute_ptt" on this &lt;bpel:invoke> activity but it cannot be resolved (check value of "portType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='if'][@name='IfStautasisvalid']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence1']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='scope'][@name='DiscountRule']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='variables']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='variable'][@name='dsIn']</loc>
+      <line>116</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Make sure that value "ns7:callFunctionStatelessMessage" is resolvable (check imports, value of "messageType").</fix>
+      <msg>"messageType" is set to "ns7:callFunctionStatelessMessage" on this &lt;bpel:variable>  but it cannot be resolved (check value of "messageType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='if'][@name='IfStautasisvalid']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence1']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='scope'][@name='DiscountRule']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='variables']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='variable'][@name='dsOut']</loc>
+      <line>117</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Make sure that value "ns7:callFunctionStatelessDecisionMessage" is resolvable (check imports, value of "messageType").</fix>
+      <msg>"messageType" is set to "ns7:callFunctionStatelessDecisionMessage" on this &lt;bpel:variable>  but it cannot be resolved (check value of "messageType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='if'][@name='IfStautasisvalid']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence1']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='scope'][@name='DiscountRule']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence2']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='assign'][@name='Facts_To_Rule_Service']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='copy']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='to']</loc>
+      <line>123</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Check the bpel:variable specified on this node via attribute "variable" and make sure it is itself specified correctly.</fix>
+      <msg>The node &lt;bpel:to> refers to a bpel:variable (via the attribute "variable") - this bpel:variable needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='if'][@name='IfStautasisvalid']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence1']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='scope'][@name='DiscountRule']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence2']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='assign'][@name='Facts_To_Rule_Service']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='copy']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='to']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='query']</loc>
+      <line>123</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Change the part name used in this expression or define this part name in the message type definition used by this variable.</fix>
+      <msg>The LocationPath expression "child::ns7:parameterList/child::ns9:price/child::ns9:price" is not allowed in &lt;bpel:query> as there is no implicit context node present.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='if'][@name='IfStautasisvalid']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence1']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='scope'][@name='DiscountRule']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence2']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='assign'][@name='Facts_To_Rule_Service']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='copy']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='to']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='query']</loc>
+      <line>123</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Check the type definition associated with the BPEL variable.</fix>
+      <msg>The XPath segment "child::ns7:parameterList" cannot be resolved.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='if'][@name='IfStautasisvalid']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence1']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='scope'][@name='DiscountRule']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence2']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='assign'][@name='BPEL_Header']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='copy']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='to']</loc>
+      <line>129</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Check the bpel:variable specified on this node via attribute "variable" and make sure it is itself specified correctly.</fix>
+      <msg>The node &lt;bpel:to> refers to a bpel:variable (via the attribute "variable") - this bpel:variable needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='if'][@name='IfStautasisvalid']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence1']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='scope'][@name='DiscountRule']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence2']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='assign'][@name='BPEL_Header']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='copy']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='to']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='query']</loc>
+      <line>129</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Change the part name used in this expression or define this part name in the message type definition used by this variable.</fix>
+      <msg>The LocationPath expression "attribute::name" is not allowed in &lt;bpel:query> as there is no implicit context node present.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='if'][@name='IfStautasisvalid']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence1']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='scope'][@name='DiscountRule']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence2']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='assign'][@name='BPEL_Header']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='copy']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='to']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='query']</loc>
+      <line>129</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Check the type definition associated with the BPEL variable.</fix>
+      <msg>The XPath segment "attribute::name" cannot be resolved.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='if'][@name='IfStautasisvalid']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence1']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='scope'][@name='DiscountRule']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence2']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='invoke'][@name='Invoke']</loc>
+      <line>134</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Check the bpel:partnerLink specified on this activity via attribute "partnerLink" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:invoke> refers to a bpel:partnerLink (via the attribute "partnerLink") - this bpel:partnerLink needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='if'][@name='IfStautasisvalid']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence1']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='scope'][@name='DiscountRule']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence2']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='invoke'][@name='Invoke']</loc>
+      <line>134</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Check the bpel:variable specified on this activity via attribute "outputVariable" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:invoke> refers to a bpel:variable (via the attribute "outputVariable") - this bpel:variable needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='if'][@name='IfStautasisvalid']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence1']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='scope'][@name='DiscountRule']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence2']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='invoke'][@name='Invoke']</loc>
+      <line>134</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Check the bpel:variable specified on this activity via attribute "inputVariable" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:invoke> refers to a bpel:variable (via the attribute "inputVariable") - this bpel:variable needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='if'][@name='IfStautasisvalid']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence1']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='scope'][@name='DiscountRule']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence2']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='invoke'][@name='Invoke']</loc>
+      <line>134</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Make sure that value "ns7:IDecisionService" is resolvable (check imports, value of "portType").</fix>
+      <msg>"portType" is set to "ns7:IDecisionService" on this &lt;bpel:invoke> activity but it cannot be resolved (check value of "portType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='if'][@name='IfStautasisvalid']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence1']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='scope'][@name='DiscountRule']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence2']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='assign'][@name='Rule_Service_To_Facts']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='copy']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='from']</loc>
+      <line>137</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Check the bpel:variable specified on this node via attribute "variable" and make sure it is itself specified correctly.</fix>
+      <msg>The node &lt;bpel:from> refers to a bpel:variable (via the attribute "variable") - this bpel:variable needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='if'][@name='IfStautasisvalid']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence1']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='scope'][@name='DiscountRule']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence2']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='assign'][@name='Rule_Service_To_Facts']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='copy']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='from']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='query']</loc>
+      <line>137</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Change the part name used in this expression or define this part name in the message type definition used by this variable.</fix>
+      <msg>The LocationPath expression "child::ns7:resultList/child::ns7:discountandshipping" is not allowed in &lt;bpel:query> as there is no implicit context node present.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='if'][@name='IfStautasisvalid']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence1']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='scope'][@name='DiscountRule']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence2']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='assign'][@name='Rule_Service_To_Facts']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='copy']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='from']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='query']</loc>
+      <line>137</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Check the type definition associated with the BPEL variable.</fix>
+      <msg>The XPath segment "child::ns7:resultList" cannot be resolved.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='if'][@name='IfStautasisvalid']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence1']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='scope'][@name='DiscountRule']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence2']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='assign'][@name='Rule_Service_To_Facts']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='copy']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='to']</loc>
+      <line>138</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Check the bpel:variable specified on this node via attribute "variable" and make sure it is itself specified correctly.</fix>
+      <msg>The node &lt;bpel:to> refers to a bpel:variable (via the attribute "variable") - this bpel:variable needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='if'][@name='IfStautasisvalid']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='Sequence1']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='if'][@name='IfTrue']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='assign'][@name='AssignPrice']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='copy']</loc>
+      <line>146</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Types must be compatible.</fix>
+      <msg>The from-spec of "type" is not compatible with to-spec of "type"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='invoke'][@name='callbackClient']</loc>
+      <line>168</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Check the bpel:partnerLink specified on this activity via attribute "partnerLink" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:invoke> refers to a bpel:partnerLink (via the attribute "partnerLink") - this bpel:partnerLink needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='invoke'][@name='callbackClient']</loc>
+      <line>168</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Check the bpel:variable specified on this activity via attribute "inputVariable" and make sure it is itself specified correctly.</fix>
+      <msg>The activity &lt;bpel:invoke> refers to a bpel:variable (via the attribute "inputVariable") - this bpel:variable needs to be defined correctly.</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='invoke'][@name='callbackClient']</loc>
+      <line>168</line>
+      <col/>
+      <file>BPEL/approveLargeOrder.bpel</file>
+      <name>BPEL/approveLargeOrder.bpel</name>
+      <fix>Make sure that value "client:approveLargeOrderCallback" is resolvable (check imports, value of "portType").</fix>
+      <msg>"portType" is set to "client:approveLargeOrderCallback" on this &lt;bpel:invoke> activity but it cannot be resolved (check value of "portType", imports, WSDLs or XSDs).</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:wire/ns:target.uri[.='getCreditCardStatus']</loc>
+      <line>90</line>
+      <col>17</col>
+      <file>C:\JDeveloper\mywork\POProcessingApplication\POProcessing_CCProject1\SOA\composite.xml</file>
+      <name>C:\JDeveloper\mywork\POProcessingApplication\POProcessing_CCProject1\SOA\composite.xml</name>
+      <fix/>
+      <msg>Cannot find Port Type "{http://oracle.com/sca/soapservice/CreditCardValidationApplication/validationForCC_CC/getStatusByCC}execute_ptt" for "approveLargeOrder" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:wire/ns:target.uri[.='getCreditCardStatus']</loc>
+      <line>90</line>
+      <col>17</col>
+      <file>C:\JDeveloper\mywork\POProcessingApplication\POProcessing_CCProject1\SOA\composite.xml</file>
+      <name>C:\JDeveloper\mywork\POProcessingApplication\POProcessing_CCProject1\SOA\composite.xml</name>
+      <fix/>
+      <msg>Cannot find Port Type "{http://oracle.com/sca/soapservice/CreditCardValidationApplication/validationForCC_CC/getStatusByCC}execute_ptt" for "getCreditCardStatus" in WSDL Manager</msg>
+   </Fault>
+</Faults>
